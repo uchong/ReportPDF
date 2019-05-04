@@ -1,0 +1,38 @@
+
+<div style="display: flex; flex-direction:row; align-content: center" [ngClass]="{'formly_cutField':options.selected, 'formly_selectField':(!options.selected&&to.editMode)}">
+        <div style="width: 100%;" draggable="{{options.selected}}"   
+                (dblclick)="dblclickFunc($event,options)" >
+
+                        <div *ngIf="this.field.selected" style="display: flex; flex-direction: row; justify-content:space-between">                   
+                                <div   (click)="deleteFunc($event,options)"  title="delete field"
+                                        style="align-self:flex-start; cursor:pointer; width:20px; border:0px; color:red;font-size:1.2em;max-height:14px;"> 
+                                        &#10006; 
+                                </div>   
+
+                                <div (click)="onMoveUp($event)"  style="cursor:pointer; margin:3px; width:16px; border:0px; color:blue;font-size:1.8em;max-height:14px;"> 
+                                        &larr; 
+                                </div>   
+
+                                <div></div>
+                                <div (click)="onMoveDown($event)"  style="cursor:pointer; margin:3px;width:16px; border:0px; color:blue;font-size:1.8em;max-height:14px;"> 
+                                        &rarr; 
+                                </div>  
+                                       
+ 
+                        </div>
+                        <mat-form-field appearance="legacy" style="width: 100% !important; resize: none;">
+                                <mat-label>{{to.label}} </mat-label>
+                                <input  *ngIf="!formControl" matInput [readonly]="to.readonly" [formlyAttributes]="field"  >
+                                <input  *ngIf="formControl" matInput [readonly]="to.readonly" [formlyAttributes]="field" [formControl]="formControl" >
+                        </mat-form-field>
+                        
+        </div>
+</div>
+<div *ngIf="this.field.selected" style="display:flex; justify-content: space-between;  margin-left:auto" >
+        <div  (click)="onFormat($event,options)"  style="cursor:pointer;  color:blue;font-size:1.0em;max-height:20px;"> 
+                <strong>format&hellip;</strong> 
+        </div>  
+        <div  (click)="dblclickFunc($event,options)"  style="cursor:pointer; margin-right: 20px; color:blue;font-size:1.0em;max-height:20px;"> 
+                <strong>OK</strong> 
+        </div>    
+</div>

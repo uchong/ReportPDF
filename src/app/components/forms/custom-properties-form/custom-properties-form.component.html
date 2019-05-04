@@ -1,0 +1,7 @@
+
+<form  (ngSubmit)="onSubmit(jFormData)">
+    <app-sdk-formly [model]= "jFormData" [fields]="jCustomForm.form?.fields" 
+                  [form]=  "dynamicForm" [readonly]="readonly" [options]="options">
+    </app-sdk-formly>
+</form>
+

@@ -1,0 +1,63 @@
+.images_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    // justify-content: space-around
+}
+
+
+.single_image{
+    width: 90%;
+    padding: 32px 10px;
+
+    & img{
+        width:100%;
+        object-fit: contain;
+    }
+}
+
+.two_image{
+    width: 40%;
+    padding: 32px 10px;
+
+    & img{
+        width:100%;
+        object-fit: contain;
+    }
+}
+
+.three_image{
+    width: 25%;
+    padding: 32px 10px;
+
+    & img{
+        width:100%;
+        object-fit: contain;
+    }
+}
+
+.report-control_c{
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    width: 400px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.report-container_r{
+    display: flex;
+    flex-direction: row;
+}
+
+.mat-card{
+    width: 500px;
+    height: 90vh!important;
+}
+
+.mat-card-content{ 
+    flex-grow: 1; /** <-- Added this: content pushes footer to the bottom. **/
+    overflow: auto; /** <-- Added this **/
+    max-height: 90vh!important;
+}

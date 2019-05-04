@@ -1,0 +1,59 @@
+// -------------------
+// ------ MEDIA QUERIES
+// -------------------
+// $upper-bound-phone: calc($lower-bound-tablet-portrait - 1px);
+// $lower-bound-tablet-portrait: 600px;
+// $lower-bound-tablet-landscape: 900px;
+// Now differentiation between tablet orientation
+// tablet equivalent notebook.
+$lower-bound-small: 600px;
+$md-small: 600px;
+$lower-bound-medium: 960px;
+$lower-bound-large: 1200px;
+$lower-bound-big-desktop: 1800px;
+$atHideSideNav: 600px;
+@mixin smaller($maxWidth) {
+    @media (max-width: #{$maxWidth - 1px}) {
+        @content;
+    }
+}
+
+@mixin smaller_vertical_height($maxHeight) {
+    @media (max-height: #{$maxHeight - 1px}) {
+        @content;
+    }
+}
+
+
+@mixin greaterEqual($minWidth) {
+    @media (min-width: #{$minWidth}) {
+        @content;
+    }
+}
+
+
+@mixin smaller-tablet {
+    @media (max-width: #{$lower-bound-medium - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet() {
+    $offset:100;
+    @media (min-width: #{$lower-bound-medium}) and (max-width: #{$lower-bound-large - 1px - $offset}) {
+        @content;
+    }
+}
+
+
+@mixin smaller-desktop {
+    @media (max-width: #{$lower-bound-large - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$lower-bound-large})  {
+        @content;
+    }
+}

@@ -1,0 +1,863 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/theming';
+@import './styles/breakpoints.scss';
+
+// @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+// @import '@angular/material/prebuilt-themes/purple-green.css';
+// @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+html {
+  height: 100%;
+}
+
+
+$searchbarcolor: gray;
+$candy-app-primary: #0b5fed;
+$background-200: gray;
+$selected: gray;
+$accent-light: orange;
+// @import './styles/scdk-theme.scss';
+
+// .my-themew {
+//   // use our theme with angular-material-theme mixin
+//   @include angular-material-theme($my-theme);
+// }
+
+
+// html, body {
+//   font-family: 'Roboto', -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+// }
+
+// $primary: map-get($my-theme, primary);
+
+// .email-text{
+//   color:blue !important;
+// }
+
+
+// .hideErrorSpacer {
+//   margin-bottom: 0;
+// }
+
+// .hideErrorSpacer .md-errors-spacer {
+//   display: none;
+// }
+
+
+@mixin md-icon-size($size: 24px) {
+    font-size: $size!important;
+    height: $size!important;;
+    width: $size!important;;
+    line-height: $size!important;;
+  }
+
+
+  mat-icon {
+  @include md-icon-size(20px);
+}
+
+// space between side by side fields
+mat-form-field{
+  margin-left:6px;
+}
+
+// Change the default behaviour of mat-card-footer to stick to the bottom instead just be the last element
+.mat-card{ 
+  display:flex !important;/** <-- Added this **/ 
+  flex-direction: column;/** <-- Added this **/
+  padding:12px !important;
+}
+.mat-card-content{ 
+  flex-grow: 1; /** <-- Added this: content pushes footer to the bottom. **/
+  overflow: auto; /** <-- Added this **/
+  max-height: 75vh;
+}
+
+.mat-headline{
+  margin-bottom: 2px  !important;
+}
+
+.mat-subheading-1{
+  margin-bottom: 0px  !important;
+}
+  
+// <p> has annoyng extra margins inside mat-cards
+.mat-card-content p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  
+}
+
+.mat-tooltip  {
+  max-width: 100px !important; // for example
+}
+
+.mat-tab-body{
+  overflow-x:hidden;
+}
+
+// lists should be stretched to the card heigth
+.mat-nav-list-card {
+  overflow: auto;
+  height: 95%;
+  max-height: 95%;
+}
+
+.mat-select-panel {
+  max-height: 80vh !important;
+}
+
+.mat-checkbox-frame {
+  border-color: rgba(0,0,0,.14);
+}
+
+
+.mat-horizontal-content-container{
+  padding-bottom: 0px !important;
+}
+
+.mat-title{
+  margin-bottom:8px;
+}
+
+// ------------------------------------------------//
+// ------ END CUSTOMIZATION OF ANGULAR MATERIAL ---//
+// ------------------------------------------------//
+
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.scdk-card-title{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-content: flex-start;
+  padding: 0 10px;
+}
+
+.scdk-card-actions{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-content: center;
+  padding: 0 10px;
+}
+
+
+.sdk-mat-tab-noline mat-tab-header {
+  border-bottom-style: none !important;
+  border-bottom-width: 0px  !important;
+}
+
+.sdk-tablike-toggle{
+  display: flex !important;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin-bottom: 5px;
+}
+
+.sdk-tablike-toggle mat-button-toggle-group {
+  border-style: none;
+}
+
+.sdk-centralize-tab-content{
+  display: flex;
+  flex-direction:column;
+  width: 40vw;
+  height: 40vh;
+  align-items:center;
+  justify-content:center;
+}
+
+
+.sdk-centralized-column{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.sdk-caman-toolbar{
+  display:flex; 
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-items: flex-start;
+  margin-left:16px; 
+  margin-right:16px; 
+}
+
+.sdk-slider {
+  margin:10px;
+  display:flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  & label {
+    font-size:12px;
+    min-width:50px;
+    width:50px;
+  }
+}
+
+.sdk-input-field2{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 0.5px solid 
+}
+
+.user_avatar_img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.sdk-label{
+  width:120px;
+  // width:70%;
+}
+.sdk-input-field{
+  height: 30px !important;
+}
+
+
+.sdk-noformated-text{
+  // white-space: pre-wrap;
+  white-space: pre-line;
+}
+
+.showme{
+  visibility: hidden!important;
+}
+.sdk-display-onhover {
+  &:hover   > .showme{
+    visibility: visible !important;;
+  } 
+}
+
+.sdk-display-all-onhover {
+  &:hover  .showme{
+    visibility: visible !important;;
+  } 
+}
+
+// Allow title and upper-left icon buttons
+
+
+.btitle {
+  display:flex; 
+  flex-direction: row;
+  align-items: center;
+  margin-block-end: 0px;
+  margin-left: 10px;
+}
+
+
+
+
+.sdk-detail-card-title  {
+  font-size: 20px;
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  // justify-content: space-between;
+  align-content: flex-start;
+  margin-bottom:14px !important;
+}
+
+// .sdk-card-header {
+//   background-color: mat-color($primary);
+//   color: white !important;
+// }
+
+
+.iconAndTextInline {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  overflow: visible;
+  & mat-icon {
+    margin-right:6px;
+  }
+
+  & span {
+    margin-bottom:0px;
+  }
+}
+
+.iconAndTextInColumn {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.sdk-list-card{
+  min-width:280px;
+  margin-left: 10px;
+}
+
+.sdk-list-card-title  {
+  font-size: 20px;
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  // margin-bottom:14px !important;
+}
+
+.horizontal-spacer{
+  flex: 1;
+}
+
+
+.sdk-action-bar{
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  flex-direction: row;
+  justify-content: space-between;;
+  align-items: center;
+  height:52px;
+  margin-bottom: 6px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+
+}
+
+.sdk-detail-card-title  button{
+  margin-top:-10px;
+}
+
+.sdk-detail-card-action{
+  display: flex  !important;;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0px !important;
+  & button {
+    margin-left:3px;
+  }
+}
+
+.sdk-sharedWith_r{
+  display: flex;
+  flex-direction: row;
+  max-width:50%;
+}
+
+.sdk-sharedWith_c{
+  display: flex;
+  flex-direction: column;
+}
+
+.sck-dialog{
+  padding: 10px;
+  // display:flex;
+  // flex-direction: column;
+  // align-content: start;
+  // justify-content: space-between
+}
+
+.sdk-mat-dialog .mat-dialog-container{
+  border-radius: 15px;
+}
+
+.sdk-vertical-absolute-centralized{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 30%;
+  width: 50%;
+  // margin: -15% 0 0 -25%;
+}
+
+.sdk-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sck-dialog button{
+  margin: 3px;
+}
+
+.filter-sidebar-container{
+  min-width:170px;
+  padding-right:10px;
+  max-width: 170px;
+}
+
+.version-sidebar-container{
+  min-width:320px;
+  padding-right:10px;
+  max-width: 320px;
+}
+
+.sdk-disabled {
+  color: $dark-disabled-text !important;
+  // color: red !important;
+}
+
+
+.sdk-search-input {
+    box-sizing: border-box;
+    padding-top: 3px;
+    padding-left: 36px;
+    border: solid 1px $searchbarcolor;
+    border-radius: 5px;
+    width: 100%;
+    height: 34px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: 0;
+    background: url(/assets/svg/ic_search_black_48px.svg);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: 5px 4px;
+    background-color: white;
+    & svg {
+        fill: white;
+    }
+    &:focus {
+        background-color: lighten( #667688, 50%);
+    }
+
+    &::-webkit-input-placeholder {
+        /* WebKit, Blink, Edge */
+        color: $background-200;
+    }
+    &:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: $background-200;
+        opacity: 1;
+    }
+    &::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: $background-200;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: $background-200;
+    }
+    &::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: $background-200;
+    }
+
+}
+
+
+
+
+
+$marginBottomHeadline: 6px;
+$marginBottomSection: 6px;
+$marginBottomSubsection: 6x;
+
+
+
+
+.formlytemplate_textDescription {
+  margin-top: 16px;
+  width: 100%;
+  padding: 0 4px 0 4px;
+}
+
+.formly_selectField {
+  box-sizing: border-box;
+  transition: border 0s; // border-width: 2px;
+  // &:hover {
+  //   // background: rgba(123, 143, 155, 0.2);
+  //   border: solid 2px #00c853;
+  //   transition: border 0.3s; // border-color:lightgreen;
+  // }
+  &__baseClass {
+    border: solid 2px rgba(255, 255, 255, 0);
+  }
+}
+
+.formlytemplate_textQuarter {
+  box-sizing: border-box;
+  padding: 0 10px 0 10px;
+  width: 25%;
+}
+
+.formlytemplate__checkbox{
+  box-sizing: border-box;
+  background-color: white;
+  width: 33%;
+}
+
+
+.formlytemplate_textHalf {
+  box-sizing: border-box;
+  padding: 0 10px 0 10px;
+  width: 50%;
+}
+
+
+
+.formlytemplate_textFull {
+  box-sizing: border-box;
+  padding: 0 10px 0 10px;
+  width: 100%;
+}
+
+
+.formlytemplate__h1 {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.formlytemplate__h2 {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.formlytemplate__h3 {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+
+.formlytemplate_separator {
+  width: 100%;
+  
+}
+.formlytemplate_separator separator{
+height:1px; width:100%; border-top: solid 2px darkgray; margin: 8px 0 8px 0;
+}
+
+.sdk-small-icon{
+  transform: scale(0.80);
+}
+
+
+.sdk-large-icon{
+  transform: scale(1.80);
+}
+
+  .toolbar-search {
+    box-sizing: border-box;
+    padding-top: 3px;
+    padding-left: 36px;
+    border: solid 2px $searchbarcolor;
+    border-radius: 100px;
+    width: 100%;
+    height: 34px;
+    color: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: 0;
+    background: url(/assets/svg/ic_search_white_48px.svg);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: 5px 4px;
+    background-color: #667688;
+    & svg {
+        fill: white;
+    }
+    &:focus {
+        background-color: lighten( #667688, 10%);
+    }
+
+    &::-webkit-input-placeholder {
+        /* WebKit, Blink, Edge */
+        color: $background-200;
+    }
+    &:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: $background-200;
+        opacity: 1;
+    }
+    &::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: $background-200;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: $background-200;
+    }
+    &::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: $background-200;
+    }
+
+}
+
+ .small-icon mat-icon {
+    @include md-icon-size(30px);
+  }
+
+
+.highlight{
+  background-color:  $selected!important;
+}
+
+.leading-item {
+  background-color:  $accent-light;
+}
+
+
+.view-container {
+  position: absolute;
+  top:0px;
+  bottom:0px;
+  left: 0px;
+  right: 0px;
+  padding-bottom: 6px;
+  // border: solid 3px;
+  overflow: auto;
+}
+
+.stretched-card {
+  overflow: auto ;
+  max-height: calc(99vh - 120px)!important;
+  min-height: calc(99vh - 120px) !important;
+  box-sizing: border-box;
+  @include mat-elevation(8)
+}
+
+
+
+
+
+
+.mat-draw-container-view {
+  height: calc(100% - 60px);
+  min-height: calc(100% - 60px);
+}
+
+
+.vertical-rotate{
+  writing-mode:vertical-rl;
+  transform: rotate(-180deg);
+  // -webkit-transform:rotate(90deg);
+  // -moz-transform:rotate(90deg);
+  // -o-transform: rotate(90deg);
+  // -ms-transform:rotate(90deg);
+  // transform: rotate(90deg);
+  white-space:nowrap;
+  display:block;
+  bottom:0;
+  width:auto;
+  height:100%;
+  text-align: center;
+
+}
+
+.list{
+  max-width: 250px;
+  align-self: flex-start;
+  border: solid;
+  border-width: 0.5px;
+}
+
+.detail {
+  display: flex;
+  margin-left:10px;
+  margin-right:10px;
+  align-self: stretch;
+  width: 100%
+}
+
+
+
+// ------------------------------------------------//
+// ------ IMAGE  ZOOM MODAL WINDOW ---//
+// ------------------------------------------------//
+
+
+.eop {
+  &-window{
+      position: relative;
+      box-sizing: border-box;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right:0px;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      
+  }
+  &-main {
+      // flex: 0 1 1600px;
+      display: flex;
+      flex-direction:column; 
+      align-content: flex-start; // (column nowrap, flex-start, center); // border: solid pink;
+      box-sizing: border-box;        
+      width: 100%;
+      height: 100%;
+      // overflow-y: auto; fixing - toolbar in entry form
+  }
+  &__view {
+      // margin-top: 24px;
+      box-sizing: border-box;
+      // border: solid pink;
+      width: 100%;
+      height: 100%;
+      // background: $background-color-paper;
+      // max-width: 1400px;
+      // padding: 0 48px 0 12px;
+      // @include smaller-tablet{
+      //     padding: 0 12px;
+      // } 
+  }
+}
+
+.eop-modal {
+  &__main {
+      box-sizing: border-box;
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.9);
+      /* Black w/ opacity */
+      z-index: 100 !important;
+  }
+  &__content {
+      margin: auto;
+      display: block;
+      max-width: 1000px;
+      width: auto;
+      height: calc(90%);
+      @include smaller(1001px){
+          max-width: 100%;
+          height: auto;
+      }
+      @include smaller(850px){
+          // height: calc(90% - 85px);
+          height: auto;
+          max-width: 100%;
+      }
+      background-color:white;
+}
+  &__close {
+      position: absolute;
+      top: 50px;
+      right: 15%;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+  }
+  &__caption {
+      margin: auto;
+      display: block;
+      width: 85%;
+      max-width: 700px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      height: 5%;
+      font-size: 18px;
+      @include smaller(850px){
+          height: 85px;
+          font-size: 16px;
+      }
+  }
+}
+
+
+/* 100% Image Width on Smaller Screens */
+
+// @media only screen and (max-width: 700px) {
+//     .eop-modal__content {
+//         width: 100%;
+//     }
+// }
+
+
+/* The Modal (background) */
+
+// .eop-modal
+/* Modal Content (Image) */
+
+
+
+
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+
+// #caption {
+//     margin: auto;
+//     display: block;
+//     width: 85%;
+//     max-width: 700px;
+//     text-align: center;
+//     color: #ccc;
+//     padding: 10px 0;
+//     height: 5%;
+//     @include smaller(850px){
+//         height: 85px;
+//     }
+// }
+
+
+/* Add Animation - Zoom in the Modal */
+
+.eop-modal__content,
+.eop-modal__caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {
+      -webkit-transform: scale(0)
+  }
+  to {
+      -webkit-transform: scale(1)
+  }
+}
+
+@keyframes zoom {
+  from {
+      transform: scale(0)
+  }
+  to {
+      transform: scale(1)
+  }
+}

@@ -1,0 +1,116 @@
+<div class="report-container_r">
+  <div class="report-control_c">
+      <h2 class="mat-tile">Report</h2>
+      <div style="display:flex">
+          <div>
+              <mat-checkbox  style="margin: 0 10px;" [(ngModel)]="showSpecification">
+                  Specs
+              </mat-checkbox>
+              <br>
+              <mat-checkbox  style="margin: 0 10px;"  [(ngModel)]="showInputForm">
+                  Input Form
+              </mat-checkbox>
+              <br>
+              <mat-checkbox  style="margin: 0 10px;"  [(ngModel)]="showOutputForm">
+                  Result Form
+              </mat-checkbox>
+              <br>
+              <mat-checkbox  style="margin: 0 10px;"  [(ngModel)]="showFiles">
+                  Add Files 
+              </mat-checkbox>
+          </div>
+
+          <div>
+                  <button mat-raised-button color="warn"  (click)="generateReport()"
+                      [disabled]="!(showFiles || showOutputForm || showInputForm || showSpecification)"> 
+                      <span class="mat-title" >Generate Report </span>
+                  </button> <br>
+                  <span [hidden]="!processing"> This will take a minute ... </span>
+                  <mat-progress-bar *ngIf="processing" mode="indeterminate"></mat-progress-bar>
+          </div>
+      </div>
+
+
+      <div style="display:flex; justify-content:space-between" *ngIf="showFiles">
+          Figures distribution:
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button id="radio_full" value="1" (click)="onCheckMode(1)"> full width</mat-radio-button>
+            <mat-radio-button id="radio_two" value="2" (click)="onCheckMode(2)"> 2 x 1 </mat-radio-button>
+            <mat-radio-button id="radio_three" value="3" (click)="onCheckMode(3)"> 3 x 1 </mat-radio-button>
+          </mat-radio-group>
+
+          <div style="display:flex; flex-direction:column">
+
+            <mat-checkbox *ngFor="let file of files" (click)="onCheckFiles(file)">{{file.filename}}</mat-checkbox>
+
+          </div>
+
+
+      </div>
+
+
+
+
+   </div>
+
+
+<mat-card >
+  <mat-card-content >
+  <div id="report-container">
+
+
+          <div  *ngIf="showSpecification" style="margin-bottom:20px; padding-left: 2%">
+              <h1 id="report_title" class="mat-title">Specifications</h1>
+              <app-task-specification-form [data]="item" 
+              [readonly]="true">
+              </app-task-specification-form>
+          </div>      
+
+          
+          <div  *ngIf="showInputForm" style="margin-bottom:20px">
+              <app-custom-properties-form  id="inputForm"   (dblclick)="buttonAlert($event)" *ngIf="item.jCustomForm_input?.form" [templateService]="templateService" 
+                  [dataFieldName]="'jFormData_input'" [formFieldName]="'jCustomForm_input'" [item]="item" 
+                  [readonly]="true">
+              </app-custom-properties-form>
+          </div> 
+
+
+          <div  *ngIf="showOutputForm" style="margin-bottom:20px">
+              <app-custom-properties-form  id="outputForm" *ngIf="item.jCustomForm_output?.form" [templateService]="templateService" 
+                  [dataFieldName]="'jFormData_output'" [formFieldName]="'jCustomForm_output'" [item]="item" 
+                  [readonly]="true">
+              </app-custom-properties-form>
+          </div>
+
+
+          <div *ngIf="showFiles">
+              <mat-divider></mat-divider>
+              <h2 class="mat-title" style="padding-left : 2%"> Images </h2>
+              <div class="images_container">
+
+                  <div class = "{{showMode}}" *ngFor="let file of imageList; let idx = index" style='text-align: left'>
+                      <span class="mat-caption"> {{file.filename}} </span>
+                      <img [src]="file.data | safe: 'url'">
+                      <span class="mat-body-strong"> Figure {{idx +1}}: </span> <span> {{file.description}} </span>
+                  </div>
+
+                  <!-- <div *ngIf="twoMode" class="two_image" *ngFor="let file of imageList; let idx = index" >
+                    <span class="mat-caption"> {{file.filename}} </span>
+                    <img [src]="file.data | safe: 'url'">
+                    <span class="mat-body-strong"> Figure {{idx +1}}: </span> <span> {{file.description}} </span>
+                  </div>
+
+                  <div *ngIf="threeMode" class="three_image" *ngFor="let file of imageList; let idx = index" >
+                    <span class="mat-caption"> {{file.filename}} </span>
+                    <img [src]="file.data | safe: 'url'">
+                    <span class="mat-body-strong"> Figure {{idx +1}}: </span> <span> {{file.description}} </span>
+                  </div> -->
+
+              </div>
+          </div>
+
+  </div>
+  </mat-card-content>
+
+</mat-card>
+</div>

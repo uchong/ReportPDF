@@ -1,0 +1,156 @@
+
+$marginBottomHeadline: 16px;
+$marginBottomSection: 12px;
+$marginBottomSubsection: 8x;
+
+.formlyTemplateContainer{
+  overflow-x: hidden;
+  width: 95%;
+}
+
+
+@mixin formly_field_row {
+  max-width: 500px;
+  margin-top:4px;
+  // margin-left:16px;
+  margin-right: 16px;
+  height: 100%;
+  overflow: visible;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;   
+  flex-wrap: wrap;
+} 
+
+
+.sample-custom-templateContainer{
+  margin-left: 24px;
+  height: 100px;
+  box-sizing: border-box;
+  overflow: visible;
+  width: 100%;
+  flex: 1 1 100%;
+}
+
+
+.sample-custom-template_field {
+  @include formly_field_row();
+}
+
+
+
+.formlytemplate_textFlex {
+  flex: 1 0 150px;
+}
+
+
+
+.formlytemplate_textQuarter {
+  box-sizing: border-box;
+  padding: 0 4px 0 4px;
+  width: 25%;
+}
+
+
+
+.formlytemplate_textHalf {
+  box-sizing: border-box;
+  padding: 0 14px 0 14px;
+  width: 50%;
+}
+
+
+
+.formlytemplate_textFull {
+  box-sizing: border-box;
+  margin-top: 12px;
+  padding: 0 14px 0 14px;
+  width: 100%;
+}
+
+
+
+.formlytemplate_textDescription {
+  margin-top: 16px;
+  width: 100%;
+  padding: 0 4px 0 4px;
+  height: 210px;
+}
+
+.formlytemplate_separator {
+  width: 100%;
+}
+
+.formlytemplate__h1 {
+  margin-bottom: $marginBottomHeadline;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.formlytemplate__h2 {
+  margin-bottom: $marginBottomSection;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.formlytemplate__h3 {
+  margin-bottom: $marginBottomSubsection;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+
+
+
+.textcenter {
+  text-align: center;
+}
+
+.formly__heading {
+  font-size: 20px; // text-align: center;
+}
+
+// advanced flex layout
+// .formly-flex-row {
+//   box-sizing: border-box; // border:solid 2px red;
+//   // padding: 12px;
+//   // width: 100%;
+//   @include flexParent(row wrap, flex-start, flex-start);
+// }
+
+// .formly-flex-column {
+//   box-sizing: border-box; // border:solid 2px red;
+//   // padding: 12px;
+//   width: 100%;
+//   @include flexParent(column wrap, flex-start, stretch);
+// }
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.formly mat-input-container {
+  padding-bottom: 0px;
+  margin-bottom: -4px;
+}
+
+// div[formly-field] md-input-container{
+//   width: 100%;
+//   box-sizing: border-box;
+// }
+// formly class name for cpfs sample request form
+// .formly-mdinputcontainer-100>md-input-container {
+//   width: 100%;
+// }
+
+
+// To re-set the font color for a disabled checkbox to black in formly
+// checkboxes are disabled instead of (ng-)readonly because readonly doesnt work for checkboxes
+//  .checkbox--black md-checkbox[disabled] .md-label {
+//   color: black;
+// }

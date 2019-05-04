@@ -1,0 +1,110 @@
+<!-- <span style="margin:0px" class="mat-title">Additional Information</span>  -->
+<div class="task-additional_r">
+  <div class="iconAndTextInColumn ">
+      <span id="sub_title_1" style="display:flex; margin:0px" class="mat-subheading-1">Requester</span>                        
+      <img id="sub_img_1" height="60px;"  *ngIf="data?.creator?.picture" draggable="false"  [src]="data.creator.picture | safe: 'url'" >
+      <img id="sub_img_1" height="60px;"  *ngIf="!(data?.creator?.picture)" draggable="false"  src="/assets/images/user_mock.png">
+      <span id="sub_name_1" class="mat-caption">{{data.creator.first_name}} {{data.creator.last_name}} </span>
+  </div>     
+
+  <div class="iconAndTextInColumn ">
+        <span id="sub_title_2" style="display:flex; margin:0px" class="mat-subheading-1">Assignee</span>                        
+        <img id="sub_img_2" height=60px; (click)="onSelectUser(data)" *ngIf="data?.assigned_to?.picture" draggable="false"  [src]="data.assigned_to.picture | safe: 'url'" >
+        <img id="sub_img_2" height=60px; (click)="onSelectUser(data)"  *ngIf="!(data?.assigned_to?.picture)" draggable="false"  src="/assets/images/user_mock.png">
+        <span id="sub_name_2" *ngIf="data.assigned_to">{{data.assigned_to?.first_name}} {{data.assigned_to?.last_name}} </span>
+  </div>
+</div>    
+
+<div (dblclick)="buttonAlert(requestCtrl)">
+  <p>
+      <mat-form-field style="width: 40%; margin-right: 20%;" floatLabel="always">
+          <mat-label>Ticket number</mat-label>
+        <input id="ticket_number"  autocomplete="off" matInput placeholder="Name" [value]="'#'+data.id" [readonly]="true">
+      </mat-form-field>
+      <mat-form-field style="width: 20%" floatLabel="always">
+          <mat-label>Priority </mat-label>
+        <input id="priority_number" matInput type="number" min="1" max="3"  [(ngModel)]="data.priority"  [readonly]="readonly || requestCtrl?.readonly"
+         (change)="onPriorityChange()"
+         autocomplete="off" placeholder="Priority" >
+        <mat-hint id="hint" *ngIf="data.priority>2"> normal </mat-hint>
+        <mat-hint id="hint" *ngIf="data.priority>1&&data.priority<3"> high  </mat-hint>
+        <mat-hint id="hint" style="color:red"  *ngIf="data.priority<2"> urgent </mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field style="width: 90%" floatLabel="always">
+            <mat-label>Name</mat-label>
+          <input id="#task-name" autocomplete="off" matInput [(ngModel)]="data.name" placeholder="Name"  [readonly]="readonly || requestCtrl?.readonly">
+        </mat-form-field>
+    </p>
+
+
+    <p>
+        <mat-form-field style="width: 90%" floatLabel="always">
+          <mat-label>Description</mat-label>
+          <textarea id="description_text" matInput [(ngModel)]="data.description" placeholder="Description" rows="4" [readonly]="readonly || requestCtrl?.readonly">
+
+          </textarea>
+        </mat-form-field>
+    </p>
+
+
+</div>
+
+
+      <!-- [(ngModel)]="data.sampleFK?.name" -->
+
+      
+
+      <h2 class="mat-title">Status</h2>
+      <span id="assigned_status" *ngIf="data.status !='draft'" class="mat-subheading-1">Task has been assigned</span>
+      <span id="assigned_status" *ngIf="data.status =='draft'" class="mat-subheading-1">Task has not been assigned</span>
+
+      <div style="display:flex; width: 100%; flex-wrap: wrap">
+
+          <div>
+              <p>
+                <mat-form-field  style="width: 80%; margin-left: 10%;"floatLabel="always">
+                    <mat-label>Deadline </mat-label>
+                    <input id="deadline_status" autocomplete="off" matInput [(ngModel)]="data.deadline" [matDatepicker]="picker1"
+                           placeholder="Deadline" [readonly]="readonly || requestCtrl?.readonly">
+                    <mat-datepicker-toggle matSuffix [for]="picker1" [disabled]= "readonly" ></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field style="width: 80%;margin-left: 10%;" floatLabel="always" (dblclick)="buttonAlert(scheduleCtrl)">
+                    <mat-label>Schedule date</mat-label>
+                    <input id="schedule_status" autocomplete="off" matInput [(ngModel)]="data.scheduled_at" [matDatepicker]="picker2" 
+                            placeholder="Schedule" [readonly]="readonly || scheduleCtrl?.readonly" >
+                    <mat-datepicker-toggle matSuffix [for]="picker2" [disabled]= "readonly || scheduleCtrl?.readonly" ></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </p>
+          </div>
+
+          <section style="display:flex; flex-direction:column">
+                <div style="display:flex; margin:0px" class="mat-subheading-1"> <div style="width:80px"> Created:   </div>  <span id='created_date'>{{data.creation_date | date: 'd. MMMM  y  @ H:mm:ss '}}</span></div>
+                <div style="display:flex; margin:0px"class="mat-subheading-1"> <div style="width:80px"> Assigned:    </div> <span id='assigned_date'>{{data.updated | date: 'd. MMMM  y  @ H:mm:ss '}}</span></div>
+                <div style="display:flex; margin:0px" class="mat-subheading-1"> <div style="width:80px"> Last Update:</div> <span id='last_date'>{{data.updated | date: 'd. MMMM  y  @ H:mm:ss '}}</span></div>
+        </section>
+
+        <div style="margin-bottom:6px; width: 90%; overflow: auto;" floatLabel="always" (click)="goToSampleTab()">
+          <div *ngIf="data.sampleMK?.length">  
+              <h2 class="mat-title">Samples</h2>
+
+              <ul id="sample_list" style="margin-top:0px;">
+                  <li *ngFor="let sample of data.sampleMK">    
+                    {{sample.samplecode }} : {{sample.name}}  
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      </div>
+
+
+
+
+
+
